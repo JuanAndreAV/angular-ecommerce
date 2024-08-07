@@ -1,0 +1,57 @@
+<header class=" mx-auto">
+    <nav class="fixed top-0 w-full h-20 px-5 flex justify-between flex-row bg-white lg:justify-between items-center shadow-2xl z-10 ">
+      <div class="  p-2 w-1/6 ">
+        <a [routerLink]="['']"><img src="{{logo.logoRaices}}" width="50" alt="raíces"></a>
+      </div>
+      <div class="md:hidden sm:block -order-1 ">
+        <button id="menu-button" ><span class=" material-symbols-outlined">
+          lists
+          </span></button>
+      </div>
+      <div class=" md:block w-4/6 hidden">
+        <ul class="flex justify-center items-center gap-6 ">
+          <li><a [routerLink]="['/productos']" class="hover:text-lime-500">Productos</a></li>
+          <li><a href="#"class="hover:text-lime-500">Nosotros</a></li>
+          <li><a href="#"class="hover:text-lime-500">Login</a></li>
+          <li><a href="#"class="hover:text-lime-500">Registro</a></li>
+        </ul>
+      </div>
+      <div class="md:items-end ">
+        <button id="carrito" class=""><img src="./assets/imgs/greenCart.svg" alt="cart" class="hover:scale-125" ><span class="cart-counter bg-orange-500 text-white absolute top-5 right-5 z-10 rounded-full  text-xs w-4 h-4 text-center  text-grap">0</span></button>
+      </div>
+
+      <div id="overlay" class="fixed hidden
+      inset-0 bg-black bg-opacity-50  z-40"></div>
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-1/2 bg-white shadow-lg transform -translate-x-full transition-transform z-50">
+       <h1 class="text-center font-extrabold">Raíces</h1>
+      <ul class="pt-4">
+            <li class="link"><a href="./pages/productos.html">Productos</a></li>
+            <li class="link"><a href="#">Nosotros</a></li>
+            <li class="link"><a href="#">Login</a></li>
+            <li class="link"><a href="#">Registro</a></li>
+            
+        </ul>
+    </div>
+    </nav>
+    <!-- SidebarCarrito -->
+     
+     <div id="sideCart" class="fixed top-0 right-0 h-full w-2/3 sm:w-1/3 bg-white drop-shadow-md hidden transition-transform  z-50">
+        <div class="bg-white w-96 h-3/4 p-4 rounded-lg flex flex-col">
+          <H1 class=" mb-5 font-semibold">Carrito</H1>
+            <div class=" flex-1 overflow-y-auto">
+              <ul class="cart-container space-y-4 shadow-lg flex flex-col p-5">
+                <template id="cart-template">
+                  <li class="rounded-lg outline outline-2 outline-offset-2 size-16 "><img src="" alt="imagenProducto" id="img-product" class=""></li>
+                  <li class="text-wrap"><p class="text-green-500" id="p-product" ></p></li>
+                  <li><h2 id="precio-producto"></h2></li>
+                  <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
+                </template>
+              </ul>
+            </div>
+            <h2 id="total"class="font-bold text-start">Total:</h2>
+            <a href="./carrito.html" class="bg-green-300 w-1/2  rounded-full p-2 text-xs text-center text-white hover:bg-slate-600" id="cart-button" >Carrito Vacío</a>
+        </div>
+     </div>
+     
+   </header>
