@@ -12,7 +12,7 @@ import { InfoService } from '../services/info.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  logo = inject(InfoService)
+  infoComercio = inject(InfoService)
 
   estado = '-translate-x-full'
   overlay:string = 'hidden'
