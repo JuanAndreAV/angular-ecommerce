@@ -13,4 +13,8 @@ import { InfoService } from '../../shared/services/info.service';
 })
 export class HomeComponent {
 infocomercio = inject(InfoService)
+
+
+
+
 }
