@@ -10,5 +10,9 @@ productsInCart: Product[] = []
 addToCart(item: Product){
   this.productsInCart.push(item)
 }
+getTotalPrice(): number{
+  
+ return this.productsInCart.reduce((precio, item)=> precio + item.price, 0)
+}
 
 }

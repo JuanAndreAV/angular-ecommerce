@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../interfaces/product';
+import { CartService } from '../../shared/services/cart.service';
 
 @Component({
   selector: 'app-carrito',
@@ -9,11 +10,8 @@ import { Product } from '../../interfaces/product';
   styleUrl: './carrito.component.css'
 })
 export class CarritoComponent {
-@Input() productsInCart: string[] = []
 
-agregarProducto(){
-  this.productsInCart.push('casa')
-}
+  constructor(public cartService: CartService){}
 
 
 }

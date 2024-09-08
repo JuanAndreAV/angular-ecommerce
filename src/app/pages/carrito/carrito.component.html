@@ -1,3 +1,32 @@
-<p>carrito works!</p>
-<p>{{productsInCart.length}}</p>
-<button (click)="agregarProducto()">agregar</button>
+<main class="mt-20 p-1 h-1/2 ">
+<h1 class="text-center font-bold text-xl font-mono" >Productos en carrito de compras</h1>
+    <div id="product-list" class="grid grid-cols-1 md:grid-cols-3 gap-4 p-3">
+     @for(product of cartService.productsInCart; track product.id){
+        <div class="product-card bg-white p-6 rounded-lg shadow-lg" >
+          
+            <img class="product-image w-full h-48 object-cover mb-4 rounded" [src]='product.images' alt="Product Image">
+            
+            <h3 class="product-name text-xl font-semibold mb-2">{{product.title}}</h3>
+           
+            <p class="product-price text-gray-900 font-bold">{{product.price}}</p>
+            
+            
+        </div>
+       }
+       
+    </div>
+    @if (cartService.productsInCart.length > 0) {
+        <div class="flex flex-col">
+        <h2 class="text-center font-bold">Total:${{cartService.getTotalPrice()}}</h2>
+        <p class="font-bold">Total productos: {{cartService.productsInCart.length}}</p>
+        
+        <a  href="https://wa.me/573043284108?text=Hola%20estoy%20interesad@%20en%20sus%20productos%20" target="_blank" class="bg-blue-500 rounded-lg border-solid border-2 p-2 text-white hover:bg-blue-400 text-center">Proceder al pago</a>
+        </div>
+        
+       }@else {
+        <p class="text-center font-mono text-3xl">NO HAY PRODUCTOS EN EL CARRITO</p>
+       }
+       
+    
+    
+  </main>
