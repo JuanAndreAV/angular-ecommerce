@@ -9,7 +9,7 @@
             <h3 class="product-name text-xl font-semibold mb-2">{{product.title}}</h3>
            
             <p class="product-price text-gray-900 font-bold">{{product.price}}</p>
-            
+            <button (click)="eliminarProducto(product)">remover</button>
             
         </div>
        }
@@ -20,7 +20,8 @@
         <h2 class="text-center font-bold">Total:${{cartService.getTotalPrice()}}</h2>
         <p class="font-bold">Total productos: {{cartService.productsInCart.length}}</p>
         
-        <a  href="https://wa.me/573043284108?text=Hola%20estoy%20interesad@%20en%20sus%20productos%20" target="_blank" class="bg-blue-500 rounded-lg border-solid border-2 p-2 text-white hover:bg-blue-400 text-center">Proceder al pago</a>
+        <a  href="https://wa.me/{{whatsAppLink}}?text=hola, deseo adquirir los siguientes productos: {{mensajePago()}}"  target="_blank" class="bg-blue-500 rounded-lg border-solid border-2 p-2 text-white hover:bg-blue-400 text-center">Proceder al pago</a>
+        
         </div>
         
        }@else {
