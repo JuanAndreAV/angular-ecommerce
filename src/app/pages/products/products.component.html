@@ -9,8 +9,15 @@
             <h3 class="product-name text-xl font-semibold mb-2">{{product.title}}</h3>
             <p class="product-code text-gray-700 mb-1">{{product.description}}</p>
             <p class="product-price text-gray-900 font-bold">{{product.price}}</p>
-            <button class="add-cart bg-yellow-500 rounded-lg border-solid border-2 p-2 text-white hover:bg-yellow-400" (click)="agregarProducto(product
-            )" >Agregar</button>
+            <p>cantidad</p>
+            <div class="grid grid-cols-3 border-black border-2 divide-x">
+                <button (click)="disminuirCantidad()" >-</button>
+                <p class="text-center">{{ cantidad}}</p>
+                <button (click)="agregarCantidad()">+</button>
+
+            </div>
+            <button class="add-cart bg-yellow-500 rounded-lg border-solid border-2 p-2 text-white hover:bg-yellow-400" (click)="agregarProducto(product)"
+             >Agregar</button>
             
         </div>
        }

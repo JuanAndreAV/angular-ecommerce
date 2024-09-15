@@ -15,6 +15,8 @@ export class ProductsComponent implements OnInit {
   
   
   productos: Product[]= []
+  cantidad: number = 1
+   
 
   constructor(private productService: ProductServiceService, public cartService: CartService) { 
     
@@ -29,6 +31,7 @@ export class ProductsComponent implements OnInit {
   this.productService.getData().subscribe(
     (response) => {
       this.productos = response;
+      
       console.log(this.productos); // Puedes ver los datos en la consola
     },
     (error) => {
@@ -37,9 +40,23 @@ export class ProductsComponent implements OnInit {
   );
  }
 
- agregarProducto(item: Product):void{
-  this.cartService.addToCart(item)
- 
+ agregarProducto(item: Product){
+  this.cartService.addToCart(item, this.cantidad)
+  this.cantidad = 1
+  
+  console.log(this.cartService.productsInCart)
  }
- 
+ agregarCantidad(){
+
+    this.cantidad ++
+   
+ }
+ disminuirCantidad(){
+ if(this.cantidad > 1){
+    this.cantidad --   
+ }
+  }
 }
+  
+ 
+

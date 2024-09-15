@@ -10,7 +10,7 @@ import { CartService } from '../../shared/services/cart.service';
   styleUrl: './carrito.component.css'
 })
 export class CarritoComponent {
- whatsAppLink = 573043284108
+  whatsAppLink = 573043284108
   encodedMessage: String=''
  
   constructor(public cartService: CartService){
