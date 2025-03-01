@@ -1,23 +1,42 @@
-<footer class="bg-black w-screen h-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 text-white">
-      <div class="text-center p-2">
-        <h2 class="text-white">{{ infoComercio.nombre }}</h2>
-        <ul class="flex justify-center gap-5 ">
-        <li class=""><a href="#" class=""><i class="fa fa-instagram" style="font-size:36px"></i></a></li>
-        <li><a href="#"><i class="fa fa-facebook-square" style="font-size:36px"></i></a></li>
-        <li><a href="#"><i class="fa fa-youtube-play" style="font-size:36px"></i></a></li>
-      </ul>
-      </div>
-      <div class="text-center p-2">
-        <ul>
-        <li>PQRS</li>
-        <li>Dirección: Guarne </li>
-        <li>raices</li>
-        </ul>
+<footer class="bg-black text-white w-screen py-6">
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-6">
+    
+    <!-- Sección de información del negocio -->
+    <div class="text-center md:text-left">
+      <h2 class="text-2xl font-bold">{{ infoComercio.nombre }}</h2>
+      <p class="text-gray-400 text-sm">Tu mercado saludable de confianza 🍃</p>
+
+      <!-- Redes Sociales -->
+      <div class="mt-4 flex justify-center md:justify-start gap-5">
+        <a href="#" class="text-gray-400 hover:text-pink-500 transition">
+          <i class="fa fa-instagram text-3xl"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-blue-500 transition">
+          <i class="fa fa-facebook-square text-3xl"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-red-500 transition">
+          <i class="fa fa-youtube-play text-3xl"></i>
+        </a>
       </div>
     </div>
-    <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
-    <a href="" class="flex justify-center p-4 text-white">{{ infoComercio.correo}}</a>
-    
 
-   </footer>
+    <!-- Sección de información adicional -->
+    <div class="text-center md:text-left">
+      <h3 class="text-xl font-semibold mb-2">Información</h3>
+      <ul class="text-gray-300 text-sm space-y-1">
+        <li><a href="#" class="hover:text-gray-100 transition">📩 PQRS</a></li>
+        <li>📍 Dirección: Guarne, Antioquia</li>
+        <li>🌿 Raíces Mercado Saludable</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Línea divisoria -->
+  <hr class="w-4/5 mx-auto my-6 border-gray-600">
+
+  <!-- Correo de contacto -->
+  <p class="text-center text-gray-400 text-sm">
+    📧 <a href="mailto:{{ infoComercio.correo }}" class="hover:text-white transition">{{ infoComercio.correo }}</a>
+  </p>
+</footer>
+
