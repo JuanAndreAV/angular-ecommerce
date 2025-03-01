@@ -19,7 +19,7 @@ export class CarritoComponent {
 
   mensajePago(){
     const mensaje = this.cartService.productsInCart.map(item => 
-  `\n${item.title}\nPrecio: $${item.price}.\n`
+  `\n${item.name}\nPrecio: $${item.price}.\n`
   ).join('');
     return this.encodedMessage = encodeURIComponent(mensaje);
     

@@ -7,38 +7,36 @@ import { CarritoComponent } from '../carrito/carrito.component';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CarritoComponent],
+  imports: [],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent   {
   
-  
-  productos: Product[]= []
+  public productService = inject(ProductServiceService);
+  //productos = []
   cantidad: number = 1
    
 
-  constructor(private productService: ProductServiceService, public cartService: CartService) { 
+  constructor( public cartService: CartService) { 
     
   }
 
 
 
-  ngOnInit(): void {
-    this.mostrarProductos()
-  }
- mostrarProductos(){
-  this.productService.getData().subscribe(
-    (response) => {
-      this.productos = response;
+  
+//  mostrarProductos(){
+//   this.productService.getData().subscribe(
+//     (response) => {
+//       this.productos = response;
       
-      console.log(this.productos); // Puedes ver los datos en la consola
-    },
-    (error) => {
-      console.error('Error al obtener los datos:', error);
-    }
-  );
- }
+//       console.log(this.productos); // Puedes ver los datos en la consola
+//     },
+//     (error) => {
+//       console.error('Error al obtener los datos:', error);
+//     }
+//   );
+//  }
 
  agregarProducto(item: Product){
   this.cartService.addToCart(item, this.cantidad)

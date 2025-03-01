@@ -1,12 +1,12 @@
 <main class="mt-16 p-1 h-1/2 ">
 
     <div id="product-list" class="grid grid-cols-1 md:grid-cols-3 gap-4 p-3">
-     @for(product of productos; track product.id){
+     @for(product of productService.products(); track product._id){
         <div class="product-card bg-white p-6 rounded-lg shadow-lg" >
           
-            <img class="product-image w-full h-48 object-cover mb-4 rounded" [src]='product.images' alt="Product Image">
+            <img class="product-image w-full h-48 object-cover mb-4 rounded" [src]='product.image' alt="Product Image">
             
-            <h3 class="product-name text-xl font-semibold mb-2">{{product.title}}</h3>
+            <h3 class="product-name text-xl font-semibold mb-2">{{product.name}}</h3>
             <p class="product-code text-gray-700 mb-1">{{product.description}}</p>
             <p class="product-price text-gray-900 font-bold">{{product.price}}</p>
             <p>cantidad</p>

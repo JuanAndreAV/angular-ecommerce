@@ -1,14 +1,15 @@
 <main class="mt-20 p-1 h-1/2 ">
 <h1 class="text-center font-bold text-xl font-mono" >Productos en carrito de compras</h1>
     <div id="product-list" class="grid grid-cols-1 md:grid-cols-3 gap-4 p-3">
-     @for(product of cartService.productsInCart; track product.id){
+     @for(product of cartService.productsInCart; track product._id){
         <div class="product-card bg-white p-6 rounded-lg shadow-lg" >
           
-            <img class="product-image w-full h-48 object-cover mb-4 rounded" [src]='product.images' alt="Product Image">
+            <img class="product-image w-full h-48 object-cover mb-4 rounded" [src]='product.image' alt="Product Image">
             
-            <h3 class="product-name text-xl font-semibold mb-2">{{product.title}}</h3>
+            <h3 class="product-name text-xl font-semibold mb-2">{{product.name}}</h3>
            
             <p class="product-price text-gray-900 font-bold">{{product.price}}</p>
+            
             <button (click)="eliminarProducto(product)">remover</button>
             
         </div>
