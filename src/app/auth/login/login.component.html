@@ -1,0 +1,12 @@
+<div class="flex flex-col  mt-20 items-center p-6 bg-white shadow-md rounded-lg">
+    <h2 class="text-2xl font-bold mb-4">Iniciar sesión</h2>
+    <form [formGroup]="loginForm()"  class="w-80 space-y-4">
+      <input formControlName="email" type="email" placeholder="Correo electrónico" class="w-full p-2 border rounded"/>
+      <p class="text-red-500 text-xs">{{errorMail()}}</p>
+      <input formControlName="password" type="password" placeholder="Contraseña" class="w-full p-2 border rounded"/>
+      <p class="text-red-500 text-xs">{{errorPassword()}}</p>
+      <button type="button"(click)="sendData()" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-700 active:bg-blue-950">Iniciar sesión</button>
+    </form>
+    <h2 class="text-green-600">{{message()}}</h2>
+    <a routerLink="/forgot-password" class="text-blue-500 mt-2">¿Olvidaste tu contraseña?</a>
+  </div>
