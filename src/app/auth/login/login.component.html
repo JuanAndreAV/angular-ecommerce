@@ -5,8 +5,8 @@
       <p class="text-red-500 text-xs">{{errorMail()}}</p>
       <input formControlName="password" type="password" placeholder="Contraseña" class="w-full p-2 border rounded"/>
       <p class="text-red-500 text-xs">{{errorPassword()}}</p>
-      <button type="button"(click)="sendData()" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-700 active:bg-blue-950">Iniciar sesión</button>
+      <button type="button"(click)="sendData()"  class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-700 active:bg-blue-950">Iniciar sesión</button>
     </form>
-    <h2 class="text-green-600">{{message()}}</h2>
+    <h2 class="text-green-600">{{authService.message()}}</h2>
     <a routerLink="/forgot-password" class="text-blue-500 mt-2">¿Olvidaste tu contraseña?</a>
   </div>

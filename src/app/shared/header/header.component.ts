@@ -4,6 +4,7 @@ import { InfoService } from '../services/info.service';
 import { CarritoComponent } from '../../pages/carrito/carrito.component';
 import { CartService } from '../services/cart.service';
 import { Product } from '../../interfaces/product';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ import { Product } from '../../interfaces/product';
 })
 export class HeaderComponent  {
   infoComercio = inject(InfoService)
-
+  authService = inject(AuthService)
   estado = '-translate-x-full'
   overlay:string = 'hidden'
   carrito:string = 'hidden'

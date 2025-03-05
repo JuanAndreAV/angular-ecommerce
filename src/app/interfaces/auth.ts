@@ -10,3 +10,11 @@ export interface AuthRequest {
     message?: string,
     error?: string;
   }
+
+  export interface newUser {
+    name: string;
+    email: string;
+    password: string;
+    confirmPassword?: string;
+    role?: string;
+  } 

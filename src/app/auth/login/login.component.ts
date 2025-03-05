@@ -1,20 +1,22 @@
 import { Component, signal, inject, Signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
-import { AuthResponse } from '../../interfaces/login';
+import { AuthResponse } from '../../interfaces/auth';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  
 })
 export class LoginComponent {
-  private authService = inject(AuthService);
+  public authService = inject(AuthService);
+  
   errorMail = signal('');
   errorPassword = signal('');
-  message = signal('')
+  
 
   loginForm = signal<FormGroup>(
     new FormGroup({
@@ -37,25 +39,7 @@ export class LoginComponent {
       return
     }
     this.authService.login(this.loginForm().value)
-    .subscribe({
-      next: (response: AuthResponse ) => {
-        if(response.token){
-          const {token} = response;
-          localStorage.setItem("token", token)
-          this.message.update(()=> `Bienvenido, ${response.name}` || "user")
-          console.log(response)
-        }else{
-          const { error: message } = response;
-          this.message.update(()=>message || "Error")
-        }
-      },
-      error:(error)=>{
-        //const {error: message} = error
-        this.message.update(()=> error.error.message  )
-        //console.log(message)
-        }
-      
-    })
+    
     //console.log(this.loginForm().value);
   }
 

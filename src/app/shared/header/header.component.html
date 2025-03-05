@@ -1,6 +1,6 @@
 <header class=" mx-auto">
   <nav class="fixed top-0 w-full h-20 px-5 flex justify-between flex-row bg-white lg:justify-between items-center shadow-2xl z-10 ">
-    <div class="  p-2 w-1/6 ">
+    <div class="p-2 w-1/6 min-h-10 ">
       <a [routerLink]="['']"><img src="{{infoComercio.logoRaices}}" width="50" alt="raíces"></a>
     </div>
     <div class="md:hidden sm:block -order-1 ">
@@ -13,7 +13,7 @@
         <li><a [routerLink]="['/productos']" class="hover:text-green-500 transition-colors">Productos</a></li>
         <li><a [routerLink]="['/nosotros']" class="hover:text-green-500 transition-colors">Nosotros</a></li>
         <li><a [routerLink]="['/login']" class="hover:text-green-500 transition-colors">Login</a></li>
-        <li><a href="#" class="hover:text-green-500 transition-colors">Registro</a></li>
+        <li><a [routerLink]="['/register']" class="hover:text-green-500 transition-colors">Registro</a></li>
       </ul>
     </div>
     <div class="md:items-end ">
@@ -29,7 +29,7 @@
       <li><a [routerLink]="['/productos']" class="block hover:text-green-500">Productos</a></li>
       <li><a [routerLink]="['/nosotros']" class="block hover:text-green-500">Nosotros</a></li>
       <li><a [routerLink]="['/login']" class="block hover:text-green-500">Login</a></li>
-      <li><a href="#" class="block hover:text-green-500">Registro</a></li>
+      <li><a [routerLink]="['/register']" class="block hover:text-green-500">Registro</a></li>
     </ul>
   </div>
   </nav>

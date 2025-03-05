@@ -1,0 +1,100 @@
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold text-center mb-6">Panel de Administración</h1>
+  
+    <!-- Sección para agregar productos -->
+    <section class="mb-8 p-4 border rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4">Agregar Producto</h2>
+      <form>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" placeholder="Nombre del producto" class="border p-2 rounded">
+          <input type="number" placeholder="Precio" class="border p-2 rounded">
+          <input type="number" placeholder="Stock" class="border p-2 rounded">
+          <input type="text" placeholder="Categoría" class="border p-2 rounded">
+          <input type="file" class="border p-2 rounded">
+        </div>
+        <button type="submit" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+          Agregar Producto
+        </button>
+      </form>
+    </section>
+  
+    <!-- Sección de Inventario -->
+    <section class="mb-8 p-4 border rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4">Inventario de Productos</h2>
+      <table class="w-full border-collapse border">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border p-2">Nombre</th>
+            <th class="border p-2">Precio</th>
+            <th class="border p-2">Stock</th>
+            <th class="border p-2">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center">
+            <td class="border p-2">Ejemplo Producto</td>
+            <td class="border p-2">$10,000</td>
+            <td class="border p-2">20</td>
+            <td class="border p-2">
+              <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">Editar</button>
+              <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  
+    <!-- Sección de Pedidos -->
+    <section class="mb-8 p-4 border rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4">Pedidos</h2>
+      <ul class="list-disc pl-5">
+        <li>Pedido #1 - Cliente: Juan Pérez - Total: $50,000 - Estado: En proceso</li>
+        <li>Pedido #2 - Cliente: María López - Total: $30,000 - Estado: Entregado</li>
+      </ul>
+    </section>
+  
+    <!-- Sección de Administración de Usuarios -->
+    <section class="mb-8 p-4 border rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4">Administrar Usuarios</h2>
+      <table class="w-full border-collapse border">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border p-2">Nombre</th>
+            <th class="border p-2">Email</th>
+            <th class="border p-2">Rol</th>
+            <th class="border p-2">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center">
+            <td class="border p-2">Admin Ejemplo</td>
+            <td class="border p-2">admin.com</td>
+            <td class="border p-2">Administrador</td>
+            <td class="border p-2">
+              <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  
+    <!-- Sección de Productos Destacados -->
+    <section class="p-4 border rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-4">Productos Destacados</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="border p-2 rounded text-center">
+          <p>Producto Destacado 1</p>
+          <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">
+            Quitar de Destacados
+          </button>
+        </div>
+        <div class="border p-2 rounded text-center">
+          <p>Producto Destacado 2</p>
+          <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">
+            Quitar de Destacados
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+  
