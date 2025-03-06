@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { Router } from '@angular/router';
 
-import { AuthRequest, AuthResponse, newUser } from '../../interfaces/auth';
+import { AuthRequest, AuthResponse, newUser, emailResponse } from '../../interfaces/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,11 @@ export class AuthService {
   private router = inject(Router);
   message = signal('');
   userResponse = signal('');
+  passwordResponse = signal('');
 
   private API_URL = environment.API_URL;
   constructor() { }
-
+  //Login de usuario
   login(credencials: AuthRequest) {
     return this.http.post<AuthResponse>(`${this.API_URL}/auth/login`,credencials)
     .subscribe({
@@ -39,9 +40,9 @@ export class AuthService {
         }
     });
   }
-
+//registro de usuario
 register(data: newUser) {
-  this.http.post<AuthResponse>(`${this.API_URL}/auth/registro`,data)
+ return this.http.post<AuthResponse>(`${this.API_URL}/auth/registro`,data)
   .subscribe({
     next: (response: AuthResponse) => {
       const message = response.message;
@@ -51,9 +52,36 @@ register(data: newUser) {
       
       this.userResponse.update(()=>error.error.message || "Error")
     }
-  }
-    
-    
+  }  
   )
 };
+//solicitud cambio contraseña
+recoverPassword(email: string){
+ return this.http.post<emailResponse>(`${this.API_URL}/auth/forgot-password`,email)
+  .subscribe({
+    next: (response: emailResponse) => {
+      const message = response.message;
+      this.userResponse.update(()=>message || "Error")
+    },error: (error) => {
+      this.userResponse.update(()=>error.error.message || "Error")
+    }
+  })
+};
+//reset contraseña
+resetPassword(token: String, password: string) {
+  return this.http.post<emailResponse>(`${this.API_URL}/auth/reset-password`,password,{
+    headers: ({
+      'Authorization': `Bearer ${token}`
+    })
+  }).subscribe({
+    next: (response: emailResponse) => {
+      const message = response.message;
+      this.passwordResponse.update(()=>message || "Error")
+      setTimeout(()=>this.router.navigate(['/login']),1000)
+    },error: (error) => {
+      this.passwordResponse.update(()=>error.error.message || "Error")
+      setTimeout(()=>this.router.navigate(['/forgot-password']),1000)
+    }
+  })
+}
 }

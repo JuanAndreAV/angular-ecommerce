@@ -10,8 +10,8 @@
       <p class="text-red-500 text-xs">{{errorPassword()}}</p>
       <input formControlName="confirmPassword" type="password"  placeholder="Confirmar contraseña" class="w-full p-2 border rounded"/>
       <p class="text-red-500 text-xs">{{errorMail()}}</p>
-      <button type="button" (click)="validForm()" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-700">Registrarse</button>
-      <h2 class="text-green-600 text-center">{{authService.userResponse()}}</h2>
+      <button type="button" (click)="validForm()" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 active:bg-green-900">Registrarse</button>
+      <h2 class="text-green-600 text-center ">{{authService.userResponse()}}</h2>
     </form>
     <a [routerLink]="['/login']" class="text-blue-500 mt-2 cursor-pointer">¿Ya tienes cuenta? Inicia sesión</a>
   </div>

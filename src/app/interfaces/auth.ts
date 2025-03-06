@@ -1,7 +1,7 @@
 export interface AuthRequest {
     email: string;
     password: string;
-  }
+  };
   
   export interface AuthResponse {
     name?: string;
@@ -9,7 +9,7 @@ export interface AuthRequest {
     token?: string;
     message?: string,
     error?: string;
-  }
+  };
 
   export interface newUser {
     name: string;
@@ -17,4 +17,8 @@ export interface AuthRequest {
     password: string;
     confirmPassword?: string;
     role?: string;
-  } 
+  };
+
+  export interface emailResponse{
+    message: string;
+  }; 
