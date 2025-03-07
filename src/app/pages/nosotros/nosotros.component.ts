@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { InfoService } from '../../shared/services/info.service';
 
 @Component({
   selector: 'app-nosotros',
@@ -11,5 +12,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './nosotros.component.css'
 })
 export class NosotrosComponent {
-
+ infoComercio = inject(InfoService)
 }

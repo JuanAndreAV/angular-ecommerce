@@ -14,10 +14,13 @@ import { CarritoComponent } from '../carrito/carrito.component';
 export class ProductsComponent   {
   
   public productService = inject(ProductServiceService);
-  //productos = []
+  productos: Product[] = this.productService.products();
   cantidad: number = 1
-   
-
+  productosFiltrados: Product[] = [...this.productService.products()]//this.productos.filter((item)=>item.category === 'café' )
+  
+  filterProduct(producto: string){
+    this.productosFiltrados = producto ? this.productService.products().filter((item)=>item.category === producto) : [...this.productService.products()] 
+  }
   constructor( public cartService: CartService) { 
     
   }

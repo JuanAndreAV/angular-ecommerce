@@ -8,6 +8,7 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { RegisterComponent } from './auth/register/register/register.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './auth/new-password/new-password.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -44,7 +45,10 @@ export const routes: Routes = [
     },
     {
         path: 'admin',
-        component: AdminPanelComponent
+        canActivate: [authGuard],
+        component: AdminPanelComponent,
+        
+
     },
     {
         path: 'new-password',

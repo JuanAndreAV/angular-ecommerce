@@ -14,6 +14,19 @@ export class AuthService {
   message = signal('');
   userResponse = signal('');
   passwordResponse = signal('');
+  getUser(){
+    return localStorage.getItem('user')||'user'
+  };
+  getToken(){
+    return localStorage.getItem('token')||'token'
+  };
+  getRole(){
+    if(this.getUser()==="admin"){
+      return true
+    }else{
+      return false
+    }
+  }
 
   private API_URL = environment.API_URL;
   constructor() { }
@@ -23,10 +36,12 @@ export class AuthService {
     .subscribe({
       next: (response: AuthResponse ) => {
         if(response.token){
-          const {token} = response;
-          localStorage.setItem("token", token);
+          //Guardar token y user
+          localStorage.setItem("token", response.token);
+          localStorage.setItem("user", response.role || 'user');
+          
           this.message.update(()=> `Bienvenido, ${response.name}` || "user");
-          setTimeout(()=>this.router.navigate(['/home']),1000)
+          setTimeout(()=>this.router.navigate(['/admin']),1000)
           //console.log(response)
         }else{
           const { error: message } = response;
@@ -47,13 +62,12 @@ register(data: newUser) {
     next: (response: AuthResponse) => {
       const message = response.message;
       this.userResponse.update(()=>message || "Error")
+      setTimeout(()=>this.router.navigate(['/login']),1000)
     },
     error: (error) => {
-      
       this.userResponse.update(()=>error.error.message || "Error")
     }
-  }  
-  )
+  })
 };
 //solicitud cambio contraseña
 recoverPassword(email: string){
@@ -69,7 +83,7 @@ recoverPassword(email: string){
 };
 //reset contraseña
 resetPassword(token: String, password: string) {
-  return this.http.post<emailResponse>(`${this.API_URL}/auth/reset-password`,password,{
+  return this.http.patch<emailResponse>(`${this.API_URL}/auth/reset-password`,password,{
     headers: ({
       'Authorization': `Bearer ${token}`
     })

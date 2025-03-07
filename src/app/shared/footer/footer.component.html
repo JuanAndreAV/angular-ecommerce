@@ -7,16 +7,13 @@
       <p class="text-gray-400 text-sm">Tu mercado saludable de confianza 🍃</p>
 
       <!-- Redes Sociales -->
+      
       <div class="mt-4 flex justify-center md:justify-start gap-5">
-        <a href="#" class="text-gray-400 hover:text-pink-500 transition">
-          <i class="fa fa-instagram text-3xl"></i>
+        @for (item of infoComercio.redes; track item.nombre) { 
+        <a href='{{item.url}}' target="_blank" class="text-gray-400 hover:text-pink-500 transition">
+          <i class="{{item.icono}} text-3xl"></i>
         </a>
-        <a href="#" class="text-gray-400 hover:text-blue-500 transition">
-          <i class="fa fa-facebook-square text-3xl"></i>
-        </a>
-        <a href="#" class="text-gray-400 hover:text-red-500 transition">
-          <i class="fa fa-youtube-play text-3xl"></i>
-        </a>
+      }
       </div>
     </div>
 
@@ -25,8 +22,8 @@
       <h3 class="text-xl font-semibold mb-2">Información</h3>
       <ul class="text-gray-300 text-sm space-y-1">
         <li><a href="#" class="hover:text-gray-100 transition">📩 PQRS</a></li>
-        <li>📍 Dirección: Guarne, Antioquia</li>
-        <li>🌿 Raíces Mercado Saludable</li>
+        <li>📍 Dirección: {{infoComercio.direccion}}</li>
+        <li>🌿 Raíces Mercado Saludable{{infoComercio}}</li>
       </ul>
     </div>
   </div>

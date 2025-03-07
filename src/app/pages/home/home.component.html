@@ -16,30 +16,14 @@
     <section class="mt-10 p-4 bg-white w-full h-auto">
       <h2 class="text-center font-bold text-lg md:text-2xl mb-6">Categorías</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
+        @for (item of infocomercio.categorias; track item.id) {
         <div class="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
-          <a href="#">
+          <button (click)="filter(item.id)">
             <img src="./assets/imgs/productos/project-1.jpg" alt="Categoría 1" class="rounded-lg w-40 md:w-48">
-            <h3 class="text-center font-semibold italic mt-2">{{infocomercio.categorias[0]}}</h3>
-          </a>
+            <h3 class="text-center font-semibold italic mt-2">{{item.title}}</h3>
+          </button>
         </div>
-        <div class="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
-          <a href="#">
-            <img src="./assets/imgs/productos/project-2.jpg" alt="Categoría 2" class="rounded-lg w-40 md:w-48">
-            <h3 class="text-center font-semibold italic mt-2">Categoría 2</h3>
-          </a>
-        </div>
-        <div class="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
-          <a href="#">
-            <img src="./assets/imgs/productos/project-3.jpg" alt="Categoría 3" class="rounded-lg w-40 md:w-48">
-            <h3 class="text-center font-semibold italic mt-2">Categoría 3</h3>
-          </a>
-        </div>
-        <div class="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
-          <a href="#">
-            <img src="./assets/imgs/productos/project-4.jpg" alt="Categoría 4" class="rounded-lg w-40 md:w-48">
-            <h3 class="text-center font-semibold italic mt-2">Categoría 4</h3>
-          </a>
-        </div>
+      }
       </div>
     </section>
 

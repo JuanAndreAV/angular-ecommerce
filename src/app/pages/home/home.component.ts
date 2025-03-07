@@ -17,7 +17,9 @@ public productService = inject(ProductServiceService)
 infocomercio = inject(InfoService)
 //debo incluir el endpoint para obtener productos destacados
 //injectar el servicio de carrito
-
+filter(item: string){
+  console.log(item)
+}
 
 
 }

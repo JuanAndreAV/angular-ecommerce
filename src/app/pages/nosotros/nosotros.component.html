@@ -1,4 +1,4 @@
-<section class="bg-white h-screen w-screen p-10">
+<!--<section class="bg-white h-screen w-screen p-10">
     <div class="py-8 px-4 mx-auto">
         <div class="mx-auto max-w-screen-sm text-center">
             <h1 class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-primary-600 ">404</h1>
@@ -8,4 +8,39 @@
             class="inline-flex bg-blue-600 text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blues-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center my-4">Back to Homepage</a>
         </div>
     </div>
-  </section>
+  </section>-->
+  <div class="max-w-4xl mx-auto mt-20 p-6 bg-white shadow-md rounded-lg">
+    <h1 class="text-2xl font-bold text-center text-gray-800 mb-4">Sobre Nosotros</h1>
+  
+    <p class="text-gray-700 text-center mb-6">
+      En <strong>{{infoComercio.nombre}}</strong>, nos apasiona ofrecer productos saludables y de calidad. 
+      Nos enfocamos en brindar lo mejor para tu bienestar y el de tu familia.
+    </p>
+  
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Misión -->
+      <div class="bg-gray-100 p-4 rounded-lg">
+        <h2 class="text-xl font-semibold text-gray-800">Nuestra Misión</h2>
+        <p class="text-gray-600 mt-2">
+          Promover un estilo de vida saludable a través de productos naturales y sostenibles, 
+          con el compromiso de calidad y responsabilidad con el medio ambiente.
+        </p>
+      </div>
+  
+      <!-- Visión -->
+      <div class="bg-gray-100  p-4 rounded-lg">
+        <h2 class="text-xl font-semibold text-gray-800">Nuestra Visión</h2>
+        <p class="text-gray-600 mt-2">
+          Ser la tienda de productos saludables de referencia, ofreciendo variedad, 
+          accesibilidad y confianza a nuestros clientes.
+        </p>
+      </div>
+    </div>
+  
+    <div class="mt-6 text-center">
+      <h2 class="text-xl font-semibold text-gray-800">Contáctanos</h2>
+      <p class="text-gray-600">📍 {{infoComercio.direccion}}</p>
+      <p class="text-gray-600">📧 {{infoComercio.correo}}</p>
+    </div>
+  </div>
+  
