@@ -47,12 +47,14 @@
     @if(cartService.productsInCart().length > 0) {
       <div class="mt-8 p-6 bg-gray-100 rounded-lg shadow-md">
         <h2 class="text-center font-bold text-xl">Total: ${{cartService.getTotalPrice()}}</h2>
-        <p class="text-center font-semibold">Total de productos: {{cartService.productsInCart().length}}</p>
-  
+        <!--<p class="text-center font-semibold">Total de productos: {{cartService.productsInCart().length}}</p>-->
+        <div class="flex justify-center">
+          <a [routerLink]="['/productos']" class="text-white rounded-lg p-3 hover:bg-lime-900 bg-lime-700">Seguir comprando</a>
+         </div>
         <!-- Botón para proceder al pago por WhatsApp -->
         <div class="flex justify-center mt-4">
           <a 
-            href="https://wa.me/{{whatsAppLink}}?text=Hola, deseo adquirir los siguientes productos: "  
+            href="https://wa.me/{{whatsAppLink}}?text=Hola, deseo adquirir los siguientes productos: {{mensajePago()}} Total: ${{total()}}"  
             target="_blank" 
             class="bg-green-500 text-white p-3 rounded-lg shadow-lg hover:bg-green-400 transition flex items-center">
             💬 Proceder al pago por WhatsApp
@@ -62,6 +64,10 @@
     }@else {
       <!-- Mensaje cuando no hay productos en el carrito -->
       <p class="text-center font-mono text-3xl mt-10 text-gray-500">🛍️ Tu carrito está vacío</p>
+       <div class="flex justify-center">
+        <a [routerLink]="['/productos']" class="text-white rounded-lg p-3 hover:bg-lime-900 bg-lime-700">Seguir comprando</a>
+       </div>
+      
     }
   </main>
   

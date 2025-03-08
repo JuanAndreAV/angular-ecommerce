@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit, Signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ProductServiceService} from '../../shared/services/product.service.service';
 import { CartService } from '../../shared/services/cart.service';
 import { Product } from '../../interfaces/product';
@@ -14,17 +14,20 @@ import { CarritoComponent } from '../carrito/carrito.component';
 export class ProductsComponent   {
   
   public productService = inject(ProductServiceService);
-  productos: Product[] = this.productService.products();
+  products = computed(()=>this.productService.products());
+  selectedCategory = signal<string | null>(null);
  
-  productosFiltrados: Product[] = [...this.productService.products()]//this.productos.filter((item)=>item.category === 'café' )
+  filteredProducts = computed(() =>
+    this.selectedCategory()
+      ? this.products().filter((p) => p.category === this.selectedCategory())
+      : this.products()
+  );
   
-  filterProduct(producto: string){
-    this.productosFiltrados = producto ? this.productService.products().filter((item)=>item.category === producto) : [...this.productService.products()] 
+  filterProducts(category: string | null) {
+    this.selectedCategory.set(category);
   }
-  constructor( public cartService: CartService) { 
-    
-  }
-
+  constructor( public cartService: CartService) {}
+  
 //  mostrarProductos(){
 //   this.productService.getData().subscribe(
 //     (response) => {
@@ -40,11 +43,7 @@ export class ProductsComponent   {
 
  agregarProducto(item: Product){
   this.cartService.addToCart(item)
-  
-  
-  console.log(this.cartService.productsInCart(
-  
-  ))
+  //console.log(this.cartService.productsInCart())
  }
 
 }

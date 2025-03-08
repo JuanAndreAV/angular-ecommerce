@@ -1,39 +1,28 @@
-import { Component, Input } from '@angular/core';
-import { Product } from '../../interfaces/product';
+import { Component, inject, computed } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CartService } from '../../shared/services/cart.service';
 
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './carrito.component.html',
   styleUrl: './carrito.component.css'
 })
 export class CarritoComponent {
   whatsAppLink = 573043284108
-  encodedMessage: String=''
- 
-  constructor(public cartService: CartService){
+  public cartService = inject(CartService)
+  total =  computed(()=> this.cartService.getTotalPrice())
+  constructor(){
     
   }
 
-  // mensajePago(){
-  //   const mensaje = this.cartService.productsInCart.map(item => 
-  // `\n${item.name}\nPrecio: $${item.price}.\n`
-  // ).join('');
-  //   return this.encodedMessage = encodeURIComponent(mensaje);
+   mensajePago(){
+    const mensaje = this.cartService.productsInCart().map(item => `\n${item.name}\n(cantidad: ${item.quantity}).`).join('')
+    return encodeURIComponent(mensaje);
     
-  // }
+   }
   
-pago(){
-   
-  return this.cartService.productsInCart().reduce((precio, item)=> precio + item.price, 0)
- 
-}
-eliminarProducto(item: Product){
-  this.cartService.eliminarProducto(item)
-  
-  //return this.cartService.productsInCart
-}
+
 
   }

@@ -14,6 +14,7 @@ export class ProductServiceService {
     products: [],
   });
  public products = computed(()=>this.state().products)
+ public destacados = computed(()=> this.state().products.map(products=>products).slice(0,3) )
 
    API_URL: string = `${environment.API_URL}/products` ;
 
