@@ -17,17 +17,17 @@ export class CarritoComponent {
     
   }
 
-  mensajePago(){
-    const mensaje = this.cartService.productsInCart.map(item => 
-  `\n${item.name}\nPrecio: $${item.price}.\n`
-  ).join('');
-    return this.encodedMessage = encodeURIComponent(mensaje);
+  // mensajePago(){
+  //   const mensaje = this.cartService.productsInCart.map(item => 
+  // `\n${item.name}\nPrecio: $${item.price}.\n`
+  // ).join('');
+  //   return this.encodedMessage = encodeURIComponent(mensaje);
     
-  }
+  // }
   
 pago(){
    
-  return this.cartService.productsInCart.reduce((precio, item)=> precio + item.price, 0)
+  return this.cartService.productsInCart().reduce((precio, item)=> precio + item.price, 0)
  
 }
 eliminarProducto(item: Product){

@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
   selector: 'app-header',
   standalone: true,
   imports: [
-    RouterModule, CarritoComponent
+    RouterModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'

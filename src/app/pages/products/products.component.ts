@@ -15,7 +15,7 @@ export class ProductsComponent   {
   
   public productService = inject(ProductServiceService);
   productos: Product[] = this.productService.products();
-  cantidad: number = 1
+ 
   productosFiltrados: Product[] = [...this.productService.products()]//this.productos.filter((item)=>item.category === 'café' )
   
   filterProduct(producto: string){
@@ -25,9 +25,6 @@ export class ProductsComponent   {
     
   }
 
-
-
-  
 //  mostrarProductos(){
 //   this.productService.getData().subscribe(
 //     (response) => {
@@ -42,21 +39,14 @@ export class ProductsComponent   {
 //  }
 
  agregarProducto(item: Product){
-  this.cartService.addToCart(item, this.cantidad)
-  this.cantidad = 1
+  this.cartService.addToCart(item)
   
-  console.log(this.cartService.productsInCart)
+  
+  console.log(this.cartService.productsInCart(
+  
+  ))
  }
- agregarCantidad(){
 
-    this.cantidad ++
-   
- }
- disminuirCantidad(){
- if(this.cantidad > 1){
-    this.cantidad --   
- }
-  }
 }
   
  

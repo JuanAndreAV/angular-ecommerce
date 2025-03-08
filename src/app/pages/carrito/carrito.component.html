@@ -3,7 +3,7 @@
   
     <!-- Lista de productos en el carrito -->
     <div id="product-list" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      @for (product of cartService.productsInCart; track product._id) {
+      @for (product of cartService.productsInCart(); track product._id) {
         <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col justify-between">
           
           <!-- Imagen del producto -->
@@ -46,12 +46,12 @@
     @if (cartService.productsInCart.length > 0) {
       <div class="mt-8 p-6 bg-gray-100 rounded-lg shadow-md">
         <h2 class="text-center font-bold text-xl">Total: ${{cartService.getTotalPrice()}}</h2>
-        <p class="text-center font-semibold">Total de productos: {{cartService.productsInCart.length}}</p>
+        <p class="text-center font-semibold">Total de productos: {{cartService.productsInCart().length}}</p>
   
         <!-- Botón para proceder al pago por WhatsApp -->
         <div class="flex justify-center mt-4">
           <a 
-            href="https://wa.me/{{whatsAppLink}}?text=Hola, deseo adquirir los siguientes productos: {{mensajePago()}}"  
+            href="https://wa.me/{{whatsAppLink}}?text=Hola, deseo adquirir los siguientes productos: "  
             target="_blank" 
             class="bg-green-500 text-white p-3 rounded-lg shadow-lg hover:bg-green-400 transition flex items-center">
             💬 Proceder al pago por WhatsApp

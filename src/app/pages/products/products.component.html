@@ -28,9 +28,9 @@
         <p class="product-price text-green-600 font-bold text-lg mb-3">${{product.price}}</p>
         
         <div class="flex items-center justify-between bg-gray-100 rounded-lg p-2 mb-3">
-          <button class="px-3 py-1 text-lg font-bold text-gray-700 hover:text-red-500" (click)="disminuirCantidad()">−</button>
-          <p class="text-lg font-semibold text-gray-800">{{ cantidad }}</p>
-          <button class="px-3 py-1 text-lg font-bold text-gray-700 hover:text-green-500" (click)="agregarCantidad()">+</button>
+          <button class="px-3 py-1 text-lg font-bold text-gray-700 hover:text-red-500" (click)="this.cartService.decrementQuantity(product._id)">−</button>
+          <p class="text-lg font-semibold text-gray-800">{{ this.cartService.getQuantity(product._id) }}</p>
+          <button class="px-3 py-1 text-lg font-bold text-gray-700 hover:text-green-500" (click)="this.cartService.incrementQuantity(product._id)">+</button>
         </div>
 
         <button class="add-cart w-full bg-green-500 text-white rounded-lg py-2 font-semibold hover:bg-green-600 transition-all"
@@ -39,6 +39,6 @@
     }
   </div>
   
-  <p class="text-center mt-4 text-gray-800 font-semibold">Productos en carrito: {{ cartService.productsInCart.length }}</p>
+  <p class="text-center mt-4 text-gray-800 font-semibold">Productos en carrito: {{ cartService.productsInCart().length }}</p>
 </main>
   
