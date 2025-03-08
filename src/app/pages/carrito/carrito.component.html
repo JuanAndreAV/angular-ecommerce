@@ -13,37 +13,38 @@
           <div>
             <h3 class="text-xl font-semibold">{{product.name}}</h3>
             <p class="text-gray-700">{{product.description}}</p>
-            <p class="text-green-600 font-bold text-lg mt-2">${{product.price}}</p>
+            <p class="text-gray-700">cantidad: {{product.quantity}}</p>
+            <p class="text-green-600 font-bold text-lg mt-2">Precio unidad: ${{product.price}}</p>
           </div>
 
 
         <!-- Controles de cantidad -->
         <div class="flex items-center justify-between mt-4">
             <button 
-             
+              (click)="cartService.decrementQuantity(product._id)"
               class="bg-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-400 transition">
               ➖
             </button>
-            <span class="text-lg font-semibold">{{1}}</span>
+            <span class="text-lg font-semibold">{{ this.cartService.getQuantity(product._id)}}</span>
             <button 
-              
+              (click)="cartService.incrementQuantity(product._id)"
               class="bg-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-400 transition">
               ➕
             </button>
           </div>
   
-          <!-- Botón para eliminar producto -->
+          <!-- Botón para eliminar producto 
           <button 
             (click)="eliminarProducto(product)" 
             class="mt-4 bg-red-500 text-white w-full p-2 rounded-lg hover:bg-red-400 transition">
             ❌ Remover
-          </button>
+          </button>-->
         </div>
       }
     </div>
   
     <!-- Sección de resumen del carrito -->
-    @if (cartService.productsInCart.length > 0) {
+    @if(cartService.productsInCart().length > 0) {
       <div class="mt-8 p-6 bg-gray-100 rounded-lg shadow-md">
         <h2 class="text-center font-bold text-xl">Total: ${{cartService.getTotalPrice()}}</h2>
         <p class="text-center font-semibold">Total de productos: {{cartService.productsInCart().length}}</p>
@@ -58,7 +59,7 @@
           </a>
         </div>
       </div>
-    } @else {
+    }@else {
       <!-- Mensaje cuando no hay productos en el carrito -->
       <p class="text-center font-mono text-3xl mt-10 text-gray-500">🛍️ Tu carrito está vacío</p>
     }

@@ -5,7 +5,7 @@ import { Product } from '../../interfaces/product';
 })
 export class CartService {
 productsInCart = signal<Product[]>([]);
-stock: number = 1;
+
   constructor() { }
 
   addToCart(item: Product): void {
@@ -35,7 +35,7 @@ stock: number = 1;
         p._id === productId ? { ...p, quantity: p.quantity! - 1,  totalPrice: p.price * (p.quantity! - 1) } : p).filter((p) => p.quantity! > 0)
     );
   };
-  getQuantity(productId: string) {
+getQuantity(productId: string) {
     const product = this.productsInCart().find((p) => p._id === productId);
     return product ? product.quantity : 0;
   }
@@ -53,8 +53,8 @@ getItemPrice(){
 
 
 
-eliminarProducto(item: Product){
- this.productsInCart().filter(producto=> producto !== item)
+eliminarProducto(productId: Product){
+ this.productsInCart().filter(producto=> producto._id !== productId._id)
   }
 
 // cantidadProducto(cantidad: number){
