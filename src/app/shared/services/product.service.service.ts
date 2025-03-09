@@ -27,6 +27,15 @@ export class ProductServiceService {
       })
     })
   }
+
+  registerProduct(product: Product){
+    return this.http.post<Product>(this.API_URL, product, {
+      headers: ({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    })
+
+  }
   
  
   

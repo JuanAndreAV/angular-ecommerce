@@ -1,24 +1,25 @@
 <main class="mt-16 p-4">
-  <div  class="flex justify-center gap-3 p-4 bg-gray-200 rounded-lg shadow-md">
-    <button (click)="filterProducts('café')" class="px-6 py-2 bg-gray-700  text-white rounded-md shadow hover:bg-gray-800 transition ">
-      Café
+  <div class="grid grid-cols-2 sm:grid-cols-4 justify-center gap-2 p-4 bg-gray-100 rounded-lg shadow-md">
+    <button (click)="filterProducts('café')" class="px-4 py-2 bg-white text-gray-700 rounded-lg shadow-sm hover:bg-gray-50 transition duration-300 ease-in-out transform hover:scale-105">
+        Café
     </button>
-  
-    <button (click)="filterProducts('cereales')" class="px-6 py-2 bg-gray-700 text-white rounded-md shadow hover:bg-gray-800 transition">
-      Cereales
+
+    <button (click)="filterProducts('cereales')" class="px-4 py-2 bg-white text-gray-700 rounded-lg shadow-sm hover:bg-gray-50 transition duration-300 ease-in-out transform hover:scale-105">
+        Cereales
     </button>
-  
-    <button (click)="filterProducts('lacteos')" class="px-6 py-2 bg-gray-700 text-white rounded-md shadow hover:bg-gray-800 transition">
-      Lácteos
+
+    <button (click)="filterProducts('lácteos')" class="px-4 py-2 bg-white text-gray-700 rounded-lg shadow-sm hover:bg-gray-50 transition duration-300 ease-in-out transform hover:scale-105">
+        Lácteos
     </button>
-  
-    <button (click)="filterProducts('endulzantes')" class="px-6 py-2 bg-gray-700 text-white rounded-md shadow hover:bg-gray-800 transition">
-      Endulzantes
+
+    <button (click)="filterProducts('endulzantes')" class="px-4 py-2 bg-white text-gray-700 rounded-lg shadow-sm hover:bg-gray-50 transition duration-300 ease-in-out transform hover:scale-105">
+        Endulzantes
     </button>
-    <button (click)="filterProducts(null)" class="px-6 py-2 bg-gray-700 text-white rounded-md shadow hover:bg-gray-800 transition">
-      Todos
+
+    <button (click)="filterProducts(null)" class="col-span-2 sm:col-span-4 px-4 py-2 bg-gray-700 text-white rounded-lg shadow-sm hover:bg-gray-800 transition duration-300 ease-in-out transform hover:scale-105">
+        Todos
     </button>
-  </div>
+</div>
 
   
   <div id="product-list" class="grid grid-cols-1 md:grid-cols-3 mt-5 gap-6 p-3">

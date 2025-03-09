@@ -16,6 +16,12 @@ export class ProductsComponent   {
   public productService = inject(ProductServiceService);
   products = computed(()=>this.productService.products());
   selectedCategory = signal<string | null>(null);
+
+  isCategoryMenuOpen = false;
+
+  toggleCategoryMenu() {
+  this.isCategoryMenuOpen = !this.isCategoryMenuOpen;
+}
  
   filteredProducts = computed(() =>
     this.selectedCategory()
@@ -23,7 +29,7 @@ export class ProductsComponent   {
       : this.products()
   );
   
-  filterProducts(category: string | null) {
+  filterProducts(category: any | null) {
     this.selectedCategory.set(category);
   }
   constructor( public cartService: CartService) {}

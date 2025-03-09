@@ -1,21 +1,36 @@
-<div class="container mx-auto p-6">
+<div class="container mt-20 mx-auto p-6">
     <h1 class="text-2xl font-bold text-center mb-6">Panel de Administración</h1>
   
     <!-- Sección para agregar productos -->
     <section class="mb-8 p-4 border rounded-lg shadow-lg">
       <h2 class="text-xl font-semibold mb-4">Agregar Producto</h2>
-      <form>
+      <form [formGroup]="addProductForm()">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" placeholder="Nombre del producto" class="border p-2 rounded">
-          <input type="number" placeholder="Precio" class="border p-2 rounded">
-          <input type="number" placeholder="Stock" class="border p-2 rounded">
-          <input type="text" placeholder="Categoría" class="border p-2 rounded">
-          <input type="file" class="border p-2 rounded">
+            <!-- Nombre del producto -->
+            <input formControlName="name" type="text" placeholder="Nombre del producto" class="border p-2 rounded">
+            <!-- Descripción del producto -->
+            <input formControlName="description" type="text" placeholder="Descripción del producto" class="border p-2 rounded">
+            <!-- Precio -->
+            <input formControlName="price" type="number" placeholder="Precio" class="border p-2 rounded">
+            <!-- Categoría (select) -->
+            <select formControlName="category" class="border p-2 rounded">
+                <option value="" disabled selected>Selecciona una categoría</option>
+                <option value="café">Café</option>
+                <option value="cereales">Cereales</option>
+                <option value="lácteos">Lácteos</option>
+                <option value="endulzantes">Endulzantes</option>
+            </select>
+            <!-- Stock -->
+            <input formControlName="stock" type="number" placeholder="Stock" class="border p-2 rounded">
+            <!-- Link de la imagen -->
+            <input formControlName="image" type="text" placeholder="Link imagen" class="border p-2 rounded">
         </div>
-        <button type="submit" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-          Agregar Producto
+        <!-- Botón para agregar producto -->
+        <button type="button" (click)="registerProduct()" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            Agregar Producto
         </button>
-      </form>
+        <h3 class="text-center text-red-600">{{formError()}}</h3>
+    </form>
     </section>
   
     <!-- Sección de Inventario -->

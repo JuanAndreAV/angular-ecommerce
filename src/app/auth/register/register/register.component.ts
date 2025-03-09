@@ -53,7 +53,7 @@ export class RegisterComponent {
 
         //envio registro
         this.authService.register(this.registerForm().value)
-        console.log(this.registerForm().value)
+        //console.log(this.registerForm().value)
         
       }else{
         this.errorPassword.update(text=>text = "Las contraseñas deben ser iguales")
