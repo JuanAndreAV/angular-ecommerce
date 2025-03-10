@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductServiceService } from '../../shared/services/product.service.service';
 
@@ -9,9 +9,10 @@ import { ProductServiceService } from '../../shared/services/product.service.ser
   templateUrl: './admin-panel.component.html',
   styleUrl: './admin-panel.component.css'
 })
-export class AdminPanelComponent {
+export class AdminPanelComponent implements OnInit {
   formError = signal('');
   productService = inject(ProductServiceService);
+  productName = signal('juanito')
 
   addProductForm = signal<FormGroup>(
     new FormGroup({
@@ -37,5 +38,15 @@ export class AdminPanelComponent {
       
       console.log(this.addProductForm().value);
     }
+  }
+
+  ngOnInit(): void {
+      this.edit()
+  }
+  edit(){
+this.addProductForm().patchValue({
+  name: 'juanito',
+  description: 'esto es una prueba',
+})
   }
 }

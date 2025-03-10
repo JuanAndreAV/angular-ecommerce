@@ -7,7 +7,7 @@
       <form [formGroup]="addProductForm()">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Nombre del producto -->
-            <input formControlName="name" type="text" placeholder="Nombre del producto" class="border p-2 rounded">
+            <input formControlName="name" type="text"  placeholder="Nombre del producto" class="border p-2 rounded">
             <!-- Descripción del producto -->
             <input formControlName="description" type="text" placeholder="Descripción del producto" class="border p-2 rounded">
             <!-- Precio -->
@@ -42,19 +42,22 @@
             <th class="border p-2">Nombre</th>
             <th class="border p-2">Precio</th>
             <th class="border p-2">Stock</th>
+            <th class="border p-2">Imagen</th>
             <th class="border p-2">Acciones</th>
           </tr>
         </thead>
         <tbody>
+          @for (product of productService.products(); track product._id) {
           <tr class="text-center">
-            <td class="border p-2">Ejemplo Producto</td>
-            <td class="border p-2">$10,000</td>
-            <td class="border p-2">20</td>
-            <td class="border p-2">
-              <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">Editar</button>
-              <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Eliminar</button>
+            <td class="border p-2"><p class="font-bold">{{product.name}}</p></td>
+            <td class="border p-2">${{product.price}}</td>
+            <td class="border p-2">{{product.stock}}</td>
+            <td class="border p-2"><img class="w-full max-w-24" src="{{product.image}}" alt=""></td>
+            <td class="grid  gap-2 border p-5">
+              <button class="bg-sky-700 text-white px-2 py-1 rounded  hover:bg-sky-900">Editar</button>
+              <button class="bg-red-800 text-white px-2 py-1 rounded hover:bg-red-900">Eliminar</button>
             </td>
-          </tr>
+          </tr>}
         </tbody>
       </table>
     </section>
@@ -94,22 +97,6 @@
     </section>
   
     <!-- Sección de Productos Destacados -->
-    <section class="p-4 border rounded-lg shadow-lg">
-      <h2 class="text-xl font-semibold mb-4">Productos Destacados</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="border p-2 rounded text-center">
-          <p>Producto Destacado 1</p>
-          <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">
-            Quitar de Destacados
-          </button>
-        </div>
-        <div class="border p-2 rounded text-center">
-          <p>Producto Destacado 2</p>
-          <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">
-            Quitar de Destacados
-          </button>
-        </div>
-      </div>
-    </section>
+    
   </div>
   
