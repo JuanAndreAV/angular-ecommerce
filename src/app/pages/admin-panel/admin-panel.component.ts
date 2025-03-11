@@ -11,11 +11,12 @@ import { Product } from '../../interfaces/product';
   styleUrl: './admin-panel.component.css'
 })
 export class AdminPanelComponent {
-  formError = signal('');
+  formMessage = signal('');
   productService = inject(ProductServiceService);
   productName = signal('juanito');
   isEditable = signal(false);
-  title = signal('Agregar Producto')
+  title = signal('Agregar Producto');
+  productId = signal('');
 
   addProductForm = signal<FormGroup>(
     new FormGroup({
@@ -29,7 +30,7 @@ export class AdminPanelComponent {
   );
   registerProduct(){
     if(!this.addProductForm().valid){
-      this.formError.update(()=>'Favor completa todos los campos');
+      this.formMessage.update(()=>'Favor completa todos los campos');
     }else{
       this.productService.registerProduct(this.addProductForm().value)
       .subscribe({
@@ -37,11 +38,11 @@ export class AdminPanelComponent {
           {
             const message = response;
             console.log(message.message)
-            this.formError.update(()=>  'Producto registrado con éxito!');
+            this.formMessage.update(()=>  'Producto registrado con éxito!');
           }
       },
       error: (error: any) => {
-        this.formError.update(()=>`Favor inicia sesión: ${error.error.message}` );
+        this.formMessage.update(()=>`Favor inicia sesión: ${error.error.message}` );
       }
     })     
     }
@@ -49,6 +50,7 @@ export class AdminPanelComponent {
 //falta traer servicio de editar e implementarlo
   edit(id: string){
     const product = this.productService.products();
+    this.productId.update(()=>id)
     const productEdit = product.find((product) => product._id === id);
     if(productEdit){
       this.isEditable.update(()=>true)
@@ -62,8 +64,28 @@ export class AdminPanelComponent {
         image: productEdit?.image
       })
     }else{
-      this.formError.update(()=>'No se encontró el producto');
-    }
-    
+      this.formMessage.update(()=>'No se encontró el producto');
+    }   
+  };
+
+  editProduct(){
+    this.isEditable.update(()=>false)
+    this.productService.editProduct(this.productId(), this.addProductForm().value)
+    .subscribe({
+      next: (response: Product ) => {
+        this.formMessage.update(()=>  `Producto: editado con éxito!`);
+        this.addProductForm().patchValue({
+          name: '',
+          description: '',
+          price: '',
+          category: '',
+          stock: '',
+          image: ''
+        })
+        
+      },error: (error: any) => {
+        this.formMessage.update(()=>`Favor inicia sesión: ${error.error.message}` );
+      }
+    })
   };
 }

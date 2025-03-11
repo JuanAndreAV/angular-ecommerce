@@ -33,8 +33,11 @@ export class ProductServiceService {
       headers: ({
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       })
-    })
+    }) 
+  };
 
+  editProduct(id: any, product: Product){
+    return this.http.patch<Product>(`${this.API_URL}/${id}`, product)
   }
   
  
