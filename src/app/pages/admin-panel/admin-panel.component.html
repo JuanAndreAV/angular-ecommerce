@@ -3,7 +3,10 @@
   
     <!-- Sección para agregar productos -->
     <section class="mb-8 p-4 border rounded-lg shadow-lg">
-      <h2 class="text-xl font-semibold mb-4">Agregar Producto</h2>
+      
+        <h2 class="text-xl font-semibold mb-4">{{title()}}</h2>
+      
+      
       <form [formGroup]="addProductForm()">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Nombre del producto -->
@@ -27,7 +30,7 @@
         </div>
         <!-- Botón para agregar producto -->
         <button type="button" (click)="registerProduct()" class="mt-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-            Agregar Producto
+            {{title()}}
         </button>
         <h3 class="text-center text-red-600">{{formError()}}</h3>
     </form>
@@ -35,7 +38,7 @@
   
     <!-- Sección de Inventario -->
     <section class="mb-8 p-4 border rounded-lg shadow-lg">
-      <h2 class="text-xl font-semibold mb-4">Inventario de Productos</h2>
+      <h2 id="editProducts" class="text-xl font-semibold mb-4">Inventario de Productos</h2>
       <table class="w-full border-collapse border">
         <thead>
           <tr class="bg-gray-200">
@@ -52,9 +55,10 @@
             <td class="border p-2"><p class="font-bold">{{product.name}}</p></td>
             <td class="border p-2">${{product.price}}</td>
             <td class="border p-2">{{product.stock}}</td>
-            <td class="border p-2"><img class="w-full max-w-24" src="{{product.image}}" alt=""></td>
+            <td class="
+            border p-2"><img class="w-full max-w-24" src="{{product.image}}" alt=""></td>
             <td class="grid  gap-2 border p-5">
-              <button class="bg-sky-700 text-white px-2 py-1 rounded  hover:bg-sky-900">Editar</button>
+              <a  (click)="edit(product._id)" class="bg-sky-700 text-white px-2 py-1 rounded cursor-pointer hover:bg-sky-900">Editar</a>
               <button class="bg-red-800 text-white px-2 py-1 rounded hover:bg-red-900">Eliminar</button>
             </td>
           </tr>}
