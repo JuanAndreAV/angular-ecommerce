@@ -35,13 +35,12 @@ export class ProductServiceService {
       })
     }) 
   };
-
   editProduct(id: any, product: Product){
     return this.http.patch<Product>(`${this.API_URL}/${id}`, product)
-  }
+  };
+  deleteProduct(id: any){
+    return this.http.delete(`${this.API_URL}/${id}`)
+  };
   
- 
-  
- 
 
 }

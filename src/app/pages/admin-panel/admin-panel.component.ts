@@ -17,6 +17,13 @@ export class AdminPanelComponent {
   isEditable = signal(false);
   title = signal('Agregar Producto');
   productId = signal('');
+  showPopup = signal(false);
+
+  popup(id?:string){
+    this.productId.update(()=>id || '')
+    console.log(this.productId())
+    this.showPopup.update(state=> !state);
+  };
 
   addProductForm = signal<FormGroup>(
     new FormGroup({
@@ -88,4 +95,17 @@ export class AdminPanelComponent {
       }
     })
   };
+  deleteProduct(){
+    this.productService.deleteProduct(this.productId())
+    .subscribe({
+      next: (response: any ) => {
+        this.formMessage.update(()=> `Producto ${response.message.name} eliminado con éxito!`);
+      },error: (error: any) => {
+        this.formMessage.update(()=>`error: ${error.error.message}` );
+      }
+    })
+    setTimeout(() =>this.showPopup.update(state=> !state),2000);
+  }
+  
+  
 }
