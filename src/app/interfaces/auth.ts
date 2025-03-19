@@ -22,3 +22,4 @@ export interface AuthRequest {
   export interface emailResponse{
     message: string;
   }; 
+  

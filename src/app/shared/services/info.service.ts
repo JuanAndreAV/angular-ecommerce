@@ -12,7 +12,7 @@ export class InfoService {
   categorias = [
     {id: 'café', title: 'Café'},
     {id: 'cereales', title: 'Cereales'},
-    {id: 'lacteos', title: 'Lácteos'},
+    {id: 'lácteos', title: 'Lácteos'},
     {id: 'endulzantes', title: 'Endulzantes'},
   ];
   correo: string = "juanandres1029@gmail.com"

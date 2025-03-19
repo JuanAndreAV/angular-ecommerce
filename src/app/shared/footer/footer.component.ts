@@ -13,4 +13,5 @@ import { InfoService } from '../services/info.service';
 })
 export class FooterComponent {
 infoComercio = inject(InfoService)
+
 }
